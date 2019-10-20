@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8440168076038620034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.897, y: 3.996, z: 0}
-  m_LocalScale: {x: 0.78460705, y: 0.790556, z: 0.661}
+  m_LocalPosition: {x: -4.2736, y: 3.7101, z: 0}
+  m_LocalScale: {x: 0.530159, y: 0.53417873, z: 0.44663772}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -117,6 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explo2: {fileID: 3519688035140341004, guid: 6dde5ee5a80afeb4f8e8ffec48706f7a, type: 3}
+  shit1: {fileID: 3985933318167118873, guid: b7fbe954742270f409f682d1f3cb64cd, type: 3}
+  shit2: {fileID: 7294851739647393516, guid: b9f9543dd9cd3f04fafc7a1e0c51da55, type: 3}
   flying: 0
   isFacingRight: 0
   dead: 0

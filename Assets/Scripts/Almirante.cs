@@ -11,12 +11,12 @@ public class Almirante : MonoBehaviour
 
     public float posicaox, posicaoy, walk;
     public bool isFacingRight;
-    public static Almirante instanciaAlmirante = null;
+    public static Almirante almiranteInstance = null;
 
 
     private void Awake() {
-        if (instanciaAlmirante == null) {
-            instanciaAlmirante = this;
+        if (almiranteInstance == null) {
+            almiranteInstance = this;
         }
     }
 
@@ -26,10 +26,10 @@ public class Almirante : MonoBehaviour
     {
         isFacingRight = true;
         posicaox = -6.2f;
-        posicaoy = -3.0f;
+        posicaoy = -3.5f;
         walk = 0.2f;
         transform.position = new Vector3(posicaox, posicaoy, 0.0f);
-        
+       
     }
 
     // Flip the Almirante horizontally when necessary
@@ -47,11 +47,11 @@ public class Almirante : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.rotation = new Quaternion(0, 0, 0, 0);
         if (Input.GetKey(KeyCode.A))
         {
             posicaox -= walk;
-            transform.position = new Vector3(posicaox, posicaoy, 0.0f);
+            transform.position = new Vector3(posicaox, transform.position.y, 0.0f);
             if (isFacingRight){
                 Flip();
             }
@@ -61,7 +61,7 @@ public class Almirante : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             posicaox += walk;
-            transform.position = new Vector3(posicaox, posicaoy, 0.0f);
+            transform.position = new Vector3(posicaox, transform.position.y, 0.0f);
             if (!isFacingRight)
             {
                 Flip();

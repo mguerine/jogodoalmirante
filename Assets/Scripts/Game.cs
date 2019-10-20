@@ -10,21 +10,23 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     public GameObject urubu;
+    public GameObject explo;
     public GameObject ball;
     public GameObject almirante;
-    
+    public GameObject floor;
+
     public Text textpoint;
     public int points;
     public int n_vulture;
-    public static Game instanciaJogo = null;
+    public static Game gameInstance = null;
 
 
     private void Awake()
     {
         // Singleton for instantiate game manager only once
-        if (instanciaJogo == null)
+        if (gameInstance == null)
         {
-            instanciaJogo = this;
+            gameInstance = this;
         }
     }
 
@@ -43,10 +45,10 @@ public class Game : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            if(Almirante.instanciaAlmirante.isFacingRight)
-                Instantiate(ball, new Vector3(almirante.transform.position.x+1, almirante.transform.position.y+0.8f, almirante.transform.position.z), Quaternion.identity);
+            if(Almirante.almiranteInstance.isFacingRight)
+                Instantiate(ball, new Vector3(almirante.transform.position.x + 0.75f, almirante.transform.position.y+0.7f, almirante.transform.position.z), Quaternion.identity);
             else
-                Instantiate(ball, new Vector3(almirante.transform.position.x - 1, almirante.transform.position.y + 0.8f, almirante.transform.position.z), Quaternion.identity);
+                Instantiate(ball, new Vector3(almirante.transform.position.x - 0.75f, almirante.transform.position.y + 0.7f, almirante.transform.position.z), Quaternion.identity);
         }
 
         // Give a small random chance to instantiate a new vulture
@@ -57,9 +59,19 @@ public class Game : MonoBehaviour
         
     }
 
-    public void UpdatePoints()
+    public void UpdatePoints(int update)
     {
-        points++;
+        if (update < 0) {
+            if (points == 0) {
+                // game over
+            } else {
+                points += update;
+            }
+           
+        } else {
+            points += update;
+        }
+        
         textpoint.text = "Pontos: " + points.ToString();
         
     }
@@ -69,6 +81,14 @@ public class Game : MonoBehaviour
         if(colisao.gameObject.tag == "Bola")
         {
             Destroy(colisao.gameObject);
+        }
+
+        if (colisao.gameObject.tag == "Urubu") {
+            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), colisao.collider);
+        }
+
+        if (colisao.gameObject.tag == "Shit") {
+            
         }
     }
 
