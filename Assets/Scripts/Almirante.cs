@@ -6,11 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Almirante : MonoBehaviour
-{
-
-    public float posicaox, posicaoy, walk;
+public class Almirante : MonoBehaviour{
     public bool isFacingRight;
+
     public static Almirante almiranteInstance = null;
 
    // [SerializeField, Tooltip("Max speed, in units per second, that the character moves.")]
@@ -39,15 +37,9 @@ public class Almirante : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         isFacingRight = true;
-        posicaox = -6.2f;
-        posicaoy = -3.5f;
-        walk = 0.2f;
-        
-        transform.position = new Vector3(posicaox, posicaoy, 0.0f);
-       
+        transform.position = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
     // Flip the Almirante horizontally when necessary
@@ -76,24 +68,18 @@ public class Almirante : MonoBehaviour
         }
 
         transform.Translate(velocity * Time.deltaTime);
-        if (Input.GetKey(KeyCode.A))
-        {
-           
-
+        if (moveInput < 0 && Time.timeScale > 0){
             //posicaox -= walk;
             //transform.position = new Vector3(posicaox, transform.position.y, 0.0f);
             if (isFacingRight){
                 Flip();
             }
-
         }
 
-        if (Input.GetKey(KeyCode.D))
-        {
+        if (moveInput > 0 && Time.timeScale > 0) {
             //posicaox += walk;
             //transform.position = new Vector3(posicaox, transform.position.y, 0.0f);
-            if (!isFacingRight)
-            {
+            if (!isFacingRight){
                 Flip();
             }
         }

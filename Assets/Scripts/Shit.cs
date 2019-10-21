@@ -24,11 +24,11 @@ public class Shit : MonoBehaviour
     void Update() {
         transform.rotation = new Quaternion(0, 0, 0, 0);
         time += Time.deltaTime;
-        if (!floor)
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f, 0.0f);
-        else {
-            transform.position = new Vector3(transform.position.x, transform.position.y, 0.0f);
-            if(time - time_floor > 5.0f) {
+        if (!floor) {
+            //transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f, 0.0f);
+        } else {
+            //transform.position = new Vector3(transform.position.x, transform.position.y, 0.0f);
+            if (time - time_floor > 5.0f) {
                 Destroy(this.gameObject);
             }
         }
@@ -44,14 +44,14 @@ public class Shit : MonoBehaviour
         if (collision.gameObject.tag == "Player" && !hit) {
             hit = true;
             collision.gameObject.GetComponent<AudioSource>().Play();
-            Game.gameInstance.UpdatePoints(-1);
-            Instantiate(Game.gameInstance.explo, new Vector3(Game.gameInstance.almirante.transform.position.x, Game.gameInstance.almirante.transform.position.y+1.0f, Game.gameInstance.almirante.transform.position.z), Quaternion.identity);
+            GameController.gameInstance.UpdatePoints(-1);
+            Instantiate(GameController.gameInstance.explo, new Vector3(GameController.gameInstance.almirante.transform.position.x, GameController.gameInstance.almirante.transform.position.y+1.0f, GameController.gameInstance.almirante.transform.position.z), Quaternion.identity);
 
 
         }
         animador.SetTrigger("shit-final");
         // Ignore collision between shit and almirante
-        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), Game.gameInstance.almirante.gameObject.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameController.gameInstance.almirante.gameObject.GetComponent<Collider2D>());
 
     }
 }

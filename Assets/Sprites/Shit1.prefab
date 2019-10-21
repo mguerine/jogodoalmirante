@@ -165,5 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animador: {fileID: 0}
   floor: 0
+  hit: 0
   time: 0
   time_floor: 0

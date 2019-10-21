@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8440168076038620038}
   - component: {fileID: 8440168076038620040}
   - component: {fileID: 4189041074172030886}
-  m_Layer: 0
-  m_Name: urubu-flying
+  m_Layer: 8
+  m_Name: Vulture-flying
   m_TagString: Urubu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,6 @@ MonoBehaviour:
   explo2: {fileID: 3519688035140341004, guid: 6dde5ee5a80afeb4f8e8ffec48706f7a, type: 3}
   shit1: {fileID: 3985933318167118873, guid: b7fbe954742270f409f682d1f3cb64cd, type: 3}
   flying: 0
-  isFacingRight: 0
   dead: 0
   animador: {fileID: 0}
 --- !u!50 &8440168076038620040
@@ -142,7 +141,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4189041074172030886
 CircleCollider2D:
   m_ObjectHideFlags: 0

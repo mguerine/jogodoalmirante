@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6452972161601286866}
   - component: {fileID: 8582840030880867034}
   m_Layer: 0
-  m_Name: Bola
+  m_Name: Ball
   m_TagString: Bola
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ec501377c7dff3944ae2085d376bbd91, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.33
   m_Pitch: 1
   Loop: 0
   Mute: 0
