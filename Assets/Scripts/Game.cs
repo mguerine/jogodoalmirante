@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Game : MonoBehaviour
     public Text textpoint;
     public int points;
     public int n_vulture;
+
     public static Game gameInstance = null;
 
 
@@ -51,8 +53,10 @@ public class Game : MonoBehaviour
                 Instantiate(ball, new Vector3(almirante.transform.position.x - 0.75f, almirante.transform.position.y + 0.7f, almirante.transform.position.z), Quaternion.identity);
         }
 
+       
+
         // Give a small random chance to instantiate a new vulture
-        if(Random.Range(1,1000) <=  10 && n_vulture < 8) {
+        if (Random.Range(1,1000) <=  10 && n_vulture < 8) {
             Instantiate(urubu, new Vector3(Random.Range(-7, 7), 4.2f, 0.0f), Quaternion.identity);
             addUrubu();
         }

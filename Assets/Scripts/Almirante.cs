@@ -13,6 +13,23 @@ public class Almirante : MonoBehaviour
     public bool isFacingRight;
     public static Almirante almiranteInstance = null;
 
+   // [SerializeField, Tooltip("Max speed, in units per second, that the character moves.")]
+    float speed = 10.0f;
+
+   // [SerializeField, Tooltip("Acceleration while grounded.")]
+    float walkAcceleration = 75.0f;
+
+    //[SerializeField, Tooltip("Acceleration while in the air.")]
+    float airAcceleration = 30.0f;
+//
+   // [SerializeField, Tooltip("Deceleration applied when character is grounded and not attempting to move.")]
+    float groundDeceleration = 80.0f;
+//
+    //[SerializeField, Tooltip("Max height the character will jump regardless of gravity")]
+    float jumpHeight = 4.0f;
+
+
+    private Vector2 velocity;
 
     private void Awake() {
         if (almiranteInstance == null) {
@@ -28,6 +45,7 @@ public class Almirante : MonoBehaviour
         posicaox = -6.2f;
         posicaoy = -3.5f;
         walk = 0.2f;
+        
         transform.position = new Vector3(posicaox, posicaoy, 0.0f);
        
     }
@@ -48,10 +66,22 @@ public class Almirante : MonoBehaviour
     void Update()
     {
         transform.rotation = new Quaternion(0, 0, 0, 0);
+       
+        float moveInput = Input.GetAxisRaw("Horizontal");
+
+        if (moveInput != 0) {
+            velocity.x = Mathf.MoveTowards(velocity.x, speed * moveInput, walkAcceleration * Time.deltaTime);
+        } else {
+            velocity.x = Mathf.MoveTowards(velocity.x, 0, groundDeceleration * Time.deltaTime);
+        }
+
+        transform.Translate(velocity * Time.deltaTime);
         if (Input.GetKey(KeyCode.A))
         {
-            posicaox -= walk;
-            transform.position = new Vector3(posicaox, transform.position.y, 0.0f);
+           
+
+            //posicaox -= walk;
+            //transform.position = new Vector3(posicaox, transform.position.y, 0.0f);
             if (isFacingRight){
                 Flip();
             }
@@ -60,8 +90,8 @@ public class Almirante : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            posicaox += walk;
-            transform.position = new Vector3(posicaox, transform.position.y, 0.0f);
+            //posicaox += walk;
+            //transform.position = new Vector3(posicaox, transform.position.y, 0.0f);
             if (!isFacingRight)
             {
                 Flip();

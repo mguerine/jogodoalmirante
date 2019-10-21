@@ -8,6 +8,7 @@ TagManager:
   - Urubu
   - Shit
   - Floor
+  - Wall
   layers:
   - Default
   - TransparentFX
