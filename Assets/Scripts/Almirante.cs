@@ -72,7 +72,7 @@ public class Almirante : MonoBehaviour{
             //posicaox -= walk;
             //transform.position = new Vector3(posicaox, transform.position.y, 0.0f);
             if (isFacingRight){
-                Flip();
+                Flip(); 
             }
         }
 

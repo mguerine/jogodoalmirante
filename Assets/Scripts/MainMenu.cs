@@ -21,11 +21,4 @@ public class MainMenu : MonoBehaviour{
     public void QuitGame() {
         Application.Quit();
     }
-
-    public void SliderChange() {
-        
-        Debug.Log(AudioListener.volume);
-    }
-
-
 }
